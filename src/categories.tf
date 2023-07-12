@@ -29,19 +29,19 @@ resource "discord_category_channel" "specialized" {
 }
 
 resource "discord_category_channel" "aircraft" {
-  name      = "Aircraft Sub-Team"
+  name      = "Aircraft"
   server_id = var.server_id
   position  = 5
 }
 
 resource "discord_category_channel" "software" {
-  name      = "Software Sub-Team"
+  name      = "Software"
   server_id = var.server_id
   position  = 6
 }
 
 resource "discord_category_channel" "payload" {
-  name      = "Payload Sub-Team"
+  name      = "Payload"
   server_id = var.server_id
   position  = 7
 }

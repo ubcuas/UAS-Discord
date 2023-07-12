@@ -24,7 +24,7 @@ data "discord_permission" "everyone" {
   mention_everyone          = "deny"
   use_external_emojis       = "deny"
   view_guild_insights       = "deny"
-  connect                   = "deny"
+  connect                   = "allow"
   speak                     = "deny"
   mute_members              = "deny"
   deafen_members            = "deny"
@@ -135,6 +135,10 @@ data "discord_permission" "yes_view" {
   view_channel = "allow"
 }
 
+data "discord_permission" "no_messaging" {
+  send_messages = "deny"
+}
+
 data "discord_permission" "yes_slash_commands" {
   use_application_commands = "allow"
 }
@@ -149,7 +153,6 @@ resource "discord_channel_permission" "server_info" {
   channel_id   = discord_category_channel.server_info.id
   type         = "role"
   overwrite_id = discord_role_everyone.everyone.id
-  allow        = data.discord_permission.server_info.allow_bits
   deny         = data.discord_permission.server_info.deny_bits
 }
 
@@ -186,6 +189,49 @@ resource "discord_channel_permission" "admin_captain" {
   channel_id   = discord_category_channel.admin.id
   type         = "role"
   overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+## Competitions ##
+
+# Only competition attendees and captains can view this category
+
+resource "discord_channel_permission" "competitions_everyone" {
+  channel_id   = discord_category_channel.competitions.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "competitions_aeac" {
+  channel_id   = discord_category_channel.competitions.id
+  type         = "role"
+  overwrite_id = discord_role.aeac.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "competitions_suas" {
+  channel_id   = discord_category_channel.competitions.id
+  type         = "role"
+  overwrite_id = discord_role.suas.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "competitions_captain" {
+  channel_id   = discord_category_channel.competitions.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+## General ##
+
+# UAS Alumni can view these channels
+
+resource "discord_channel_permission" "general_uas_alumni" {
+  channel_id   = discord_category_channel.general.id
+  type         = "role"
+  overwrite_id = discord_role.uas_alumni.id
   allow        = data.discord_permission.yes_view.allow_bits
 }
 
@@ -234,21 +280,21 @@ data "discord_permission" "verify_everyone" {
 # Only admin members, sub-team leads, and captains can send messages in the #announcements channel
 
 resource "discord_channel_permission" "announcements_admin" {
-  channel_id   = discord_news_channel.announcements.id
+  channel_id   = discord_text_channel.announcements.id
   type         = "role"
   overwrite_id = discord_role.admin.id
   allow        = data.discord_permission.announcements_send.allow_bits
 }
 
 resource "discord_channel_permission" "announcements_sub-team_lead" {
-  channel_id   = discord_news_channel.announcements.id
+  channel_id   = discord_text_channel.announcements.id
   type         = "role"
   overwrite_id = discord_role.sub-team_lead.id
   allow        = data.discord_permission.announcements_send.allow_bits
 }
 
 resource "discord_channel_permission" "announcements_captain" {
-  channel_id   = discord_news_channel.announcements.id
+  channel_id   = discord_text_channel.announcements.id
   type         = "role"
   overwrite_id = discord_role.captain.id
   allow        = data.discord_permission.announcements_send.allow_bits
@@ -269,6 +315,38 @@ resource "discord_channel_permission" "sub-team_leads_admin" {
   deny         = data.discord_permission.no_view.deny_bits
 }
 
+## Server Messages ##
+
+# No one can send messages in the #server-messages channel
+
+resource "discord_channel_permission" "server_messages_everyone" {
+  channel_id   = discord_text_channel.server_messages.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "server_messages_admin" {
+  channel_id   = discord_text_channel.server_messages.id
+  type         = "role"
+  overwrite_id = discord_role.admin.id
+  deny         = data.discord_permission.no_messaging.deny_bits
+}
+
+resource "discord_channel_permission" "server_messages_sub-team_lead" {
+  channel_id   = discord_text_channel.server_messages.id
+  type         = "role"
+  overwrite_id = discord_role.sub-team_lead.id
+  deny         = data.discord_permission.no_messaging.deny_bits
+}
+
+resource "discord_channel_permission" "server_messages_captain" {
+  channel_id   = discord_text_channel.server_messages.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  deny         = data.discord_permission.no_messaging.deny_bits
+}
+
 ## Sub-Team Leads Voice ##
 
 # Only sub-team leads and captains can view the voice channel
@@ -278,6 +356,134 @@ resource "discord_channel_permission" "sub-team_leads_voice_admin" {
   type         = "role"
   overwrite_id = discord_role.admin.id
   deny         = data.discord_permission.no_view.deny_bits
+}
+
+## AEAC ##
+
+# Only AEAC members and captains can view the #aeac channel
+
+resource "discord_channel_permission" "aeac_everyone" {
+  channel_id   = discord_text_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "aeac_suas" {
+  channel_id   = discord_text_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.suas.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "aeac_aeac" {
+  channel_id   = discord_text_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.aeac.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "aeac_captain" {
+  channel_id   = discord_text_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+## SUAS ##
+
+# Only SUAS members and captains can view the #suas channel
+
+resource "discord_channel_permission" "suas_everyone" {
+  channel_id   = discord_text_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "suas_aeac" {
+  channel_id   = discord_text_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.aeac.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "suas_suas" {
+  channel_id   = discord_text_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.suas.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "suas_captain" {
+  channel_id   = discord_text_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+## AEAC Voice ##
+
+# Only AEAC members and captains can view the voice channel
+
+resource "discord_channel_permission" "aeac_voice_everyone" {
+  channel_id   = discord_voice_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "aeac_voice_suas" {
+  channel_id   = discord_voice_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.suas.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "aeac_voice_aeac" {
+  channel_id   = discord_voice_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.aeac.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "aeac_voice_captain" {
+  channel_id   = discord_voice_channel.aeac.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+## SUAS Voice ##
+
+# Only SUAS members and captains can view the voice channel
+
+resource "discord_channel_permission" "suas_voice_everyone" {
+  channel_id   = discord_voice_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "suas_voice_aeac" {
+  channel_id   = discord_voice_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.aeac.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "suas_voice_suas" {
+  channel_id   = discord_voice_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.suas.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "suas_voice_captain" {
+  channel_id   = discord_voice_channel.suas.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 ## Bot Commands ##

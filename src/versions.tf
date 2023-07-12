@@ -9,5 +9,9 @@ terraform {
     discord = {
       source = "Lucky3028/discord"
     }
+    github = {
+      source = "integrations/github"
+      version = "5.30.1"
+    }
   }
 }

@@ -6,9 +6,9 @@ resource "discord_managed_server" "uas_server" {
   explicit_content_filter       = 2 # Filter for all members
   default_message_notifications = 0 # All messages
   owner_id                      = var.uas_account_id
-  icon_data_uri                 = data.discord_local_image.logo.data_uri
+  splash_data_uri               = data.discord_local_image.logo.data_uri # Splash = icon
   afk_channel_id                = discord_voice_channel.music.id
-  afk_timeout                   = 60 # Minutes
+  afk_timeout                   = 900 # 15 Minutes
 }
 
 resource "discord_system_channel" "system" {
@@ -21,7 +21,7 @@ data "discord_local_image" "logo" {
 }
 
 resource "discord_invite" "main" {
-  channel_id = discord_text_channel.about.id
+  channel_id = discord_text_channel.verify.id
   max_age    = 0
   unique     = false
 }

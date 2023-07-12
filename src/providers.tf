@@ -1,3 +1,8 @@
 provider discord {
-    token = var.discord_token
+    token = var.terraform_bot_token
+}
+
+provider "github" {
+    token = var.github_token
+    owner = "ubcuas"
 }
