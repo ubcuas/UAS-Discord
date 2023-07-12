@@ -1,17 +1,29 @@
-variable "discord_token" {
+variable "terraform_bot_token" {
     type        = string
-    description = "The token for the Discord bot"
+    description = "The token for the Terraform Discord bot"
+    sensitive   = true
+}
+
+variable "terraform_bot_id" {
+    type        = string
+    description = "The ID of the Terraform Discord bot"
     sensitive   = true
 }
 
 variable "server_id" {
     type        = string
-    description = "The ID of the Discord server"
+    description = "The ID of the UAS Discord server"
     sensitive   = true
 }
 
 variable "uas_account_id" {
     type        = string
-    description = "The ID of the UAS Discord account"
+    description = "The ID of the UAS admin Discord account"
+    sensitive   = true
+}
+
+variable "github_token" {
+    type        = string
+    description = "The token for the GitHub provider"
     sensitive   = true
 }
