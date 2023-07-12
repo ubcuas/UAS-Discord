@@ -10,7 +10,7 @@ resource "github_organization_webhook" "software_reviews" {
 
   configuration {
     url          = discord_webhook.webhook.github_url
-    content_type = "form"
+    content_type = "json"
     insecure_ssl = false
   }
 }
