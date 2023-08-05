@@ -238,6 +238,17 @@ resource "discord_text_channel" "aircraft_general" {
   sync_perms_with_category = true
 }
 
+## Payload Category ##
+
+resource "discord_text_channel" "payload_general" {
+  name                     = "general"
+  server_id                = var.server_id
+  position                 = 0
+  topic                    = "Home of the payload sub-team"
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
 ## Software Category ##
 
 resource "discord_text_channel" "software_general" {
@@ -264,16 +275,5 @@ resource "discord_text_channel" "software_errors" {
   position                 = 2
   topic                    = "Software error reports"
   category                 = discord_category_channel.software.id
-  sync_perms_with_category = true
-}
-
-## Payload Category ##
-
-resource "discord_text_channel" "payload_general" {
-  name                     = "general"
-  server_id                = var.server_id
-  position                 = 0
-  topic                    = "Home of the payload sub-team"
-  category                 = discord_category_channel.payload.id
   sync_perms_with_category = true
 }

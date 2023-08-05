@@ -61,18 +61,6 @@ resource "discord_role" "aircraft" {
   depends_on = [ discord_role.bots ]
 }
 
-resource "discord_role" "software" {
-  server_id   = var.server_id
-  name        = "Software"
-  permissions = 0
-  color       = data.discord_color.software.dec
-  hoist       = true
-  mentionable = true
-  position    = 6
-
-  depends_on = [ discord_role.aircraft ]
-}
-
 resource "discord_role" "payload" {
   server_id   = var.server_id
   name        = "Payload"
@@ -80,9 +68,21 @@ resource "discord_role" "payload" {
   color       = data.discord_color.payload.dec
   hoist       = true
   mentionable = true
-  position    = 5
+  position    = 6
 
-  depends_on = [ discord_role.software ]
+  depends_on = [ discord_role.aircraft ]
+}
+
+resource "discord_role" "software" {
+  server_id   = var.server_id
+  name        = "Software"
+  permissions = 0
+  color       = data.discord_color.software.dec
+  hoist       = true
+  mentionable = true
+  position    = 7
+
+  depends_on = [ discord_role.payload ]
 }
 
 # All members who have verified their identity
@@ -95,7 +95,7 @@ resource "discord_role" "verified" {
   mentionable = false
   position    = 4
 
-  depends_on = [ discord_role.payload ]
+  depends_on = [ discord_role.software ]
 }
 
 # Past UAS members we want to keep in the server
