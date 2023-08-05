@@ -1,4 +1,4 @@
-resource "discord_message" "about" {
+resource "discord_message" "image" {
   channel_id = discord_text_channel.about.id
 
   embed {
@@ -6,6 +6,10 @@ resource "discord_message" "about" {
       url = "https://drive.google.com/uc?id=1CA8M2Lb-dfYzyh65Qag0Ki4r1Rjc8qtB"
     }
   }
+}
+
+resource "discord_message" "server_info" {
+  channel_id = discord_text_channel.about.id
 
   embed {
     title       = "Server Information"
@@ -62,6 +66,10 @@ resource "discord_message" "about" {
       inline = false
     }
   }
+}
+
+resource "discord_message" "rules" {
+  channel_id = discord_text_channel.about.id
 
   embed {
     title       = "Rules"
@@ -100,6 +108,10 @@ resource "discord_message" "about" {
       inline = false
     }
   }
+}
+
+resource "discord_message" "resources" {
+  channel_id = discord_text_channel.about.id
 
   embed {
     title       = "Team Resources"
