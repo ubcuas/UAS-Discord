@@ -1,5 +1,12 @@
 resource "discord_message" "about" {
   channel_id = discord_text_channel.about.id
+
+  embed {
+    image {
+      url = "https://drive.google.com/uc?id=1CA8M2Lb-dfYzyh65Qag0Ki4r1Rjc8qtB"
+    }
+  }
+
   embed {
     title       = "Server Information"
     description = <<-EOT
@@ -55,6 +62,7 @@ resource "discord_message" "about" {
       inline = false
     }
   }
+
   embed {
     title       = "Rules"
     description = "UAS hopes to foster a welcoming and tight-knit community. To ensure this, all members must strictly adhere to our rules."
@@ -92,6 +100,7 @@ resource "discord_message" "about" {
       inline = false
     }
   }
+
   embed {
     title       = "Team Resources"
     description = <<-EOT
