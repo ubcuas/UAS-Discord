@@ -1,7 +1,7 @@
 resource "discord_webhook" "webhook" {
-    channel_id      = discord_text_channel.software_reviews.id
-    name            = "GitHub"
-    avatar_url      = "https://github.githubassets.com/pinned-octocat.svg"
+  channel_id      = discord_text_channel.software_reviews.id
+  name            = "GitHub"
+  avatar_url      = "https://github.githubassets.com/app-icon-512.png"
 }
 
 resource "github_organization_webhook" "software_reviews" {
