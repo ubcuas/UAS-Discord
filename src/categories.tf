@@ -34,14 +34,14 @@ resource "discord_category_channel" "aircraft" {
   position  = 5
 }
 
-resource "discord_category_channel" "software" {
-  name      = "Software"
+resource "discord_category_channel" "payload" {
+  name      = "Payload"
   server_id = var.server_id
   position  = 6
 }
 
-resource "discord_category_channel" "payload" {
-  name      = "Payload"
+resource "discord_category_channel" "software" {
+  name      = "Software"
   server_id = var.server_id
   position  = 7
 }

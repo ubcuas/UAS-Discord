@@ -1,7 +1,7 @@
 resource "discord_managed_server" "uas_server" {
   server_id                     = var.server_id
-  name                          = "UBC UAS Test"
-  region                        = "us-west"
+  name                          = "UBC UAS"
+  region                        = "us-west" # For voice channels
   verification_level            = 1 # Low
   explicit_content_filter       = 2 # Filter for all members
   default_message_notifications = 0 # All messages
