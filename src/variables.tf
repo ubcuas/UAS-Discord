@@ -1,12 +1,6 @@
-variable "terraform_bot_token" {
+variable "uas_bot_token" {
   type        = string
   description = "The token for the Terraform Discord bot"
-  sensitive   = true
-}
-
-variable "terraform_bot_id" {
-  type        = string
-  description = "The ID of the Terraform Discord bot"
   sensitive   = true
 }
 

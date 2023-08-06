@@ -1,5 +1,5 @@
 provider discord {
-  token = var.terraform_bot_token
+  token = var.uas_bot_token
 }
 
 provider "github" {
