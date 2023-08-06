@@ -271,6 +271,8 @@ resource "discord_channel_permission" "verify_captain" {
 }
 
 data "discord_permission" "verify_everyone" {
+  # Permissions required to use the slash command verification system
+  send_messages            = "allow"
   view_channel             = "allow"
   use_application_commands = "allow"
 }
