@@ -80,7 +80,7 @@ resource "discord_role" "software" {
   color       = data.discord_color.software.dec
   hoist       = true
   mentionable = true
-  position    = 7
+  position    = 5
 
   depends_on = [ discord_role.payload ]
 }
