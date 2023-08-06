@@ -18,7 +18,6 @@ resource "discord_message" "server_info" {
     color       = data.discord_color.uas_blue.dec
     description = <<-EOT
       Welcome to the UBC UAS Discord server!
-
     EOT
 
     fields {
@@ -26,7 +25,6 @@ resource "discord_message" "server_info" {
       inline = false
       value  = <<-EOT
         We have a variety of roles for oranization purposes which our managed by the <@${var.uas_bot_id}>. If you have an issue with permissions please reach out to the admin team.
-
         - <@&${discord_role.captain.id}>: Captain
         - <@&${discord_role.sub-team_lead.id}>: Sub-team leads
         - <@&${discord_role.admin.id}>: Admin team members
@@ -37,7 +35,6 @@ resource "discord_message" "server_info" {
         - <@&${discord_role.verified.id}>: All current members who have verified
         - <@&${discord_role.uas_alumni.id}>: Past members of the team
         - @everyone: Default role for all members (minimal permissions beyond seeing the verify channel)
-
       EOT
     }
 
@@ -46,14 +43,12 @@ resource "discord_message" "server_info" {
       inline = false
       value  = <<-EOT
         The server is structured into a few key categories with corresponding channels. The purpose of each channel should be clear by its name but you can also check its description to be sure.
-
         - ${discord_category_channel.server_info.name}: Information about the server and team as well as announcements
         - ${discord_category_channel.admin.name}: Private channels for admin team members
         - ${discord_category_channel.competitions.name}: Private channels for competition attendees
         - ${discord_category_channel.general.name}: General discussion and voice channels
         - ${discord_category_channel.specialized.name}: Topic-specific channels
         - Sub-Team Categories: Categories for each sub-team with their own channels
-
       EOT
     }
 
@@ -81,7 +76,6 @@ resource "discord_message" "rules" {
     color       = data.discord_color.uas_blue.dec
     description = <<-EOT
       UAS hopes to foster a welcoming and tight-knit community. To ensure this, all members must strictly adhere to our rules.
-
     EOT
 
     fields {
@@ -89,7 +83,6 @@ resource "discord_message" "rules" {
       inline = false
       value  = <<-EOT
         By joining UBC UAS you agree to our [rules and guidelines](https://screenmessage.com/uas-agreement-wip).
-
       EOT
 }
 
@@ -108,7 +101,6 @@ resource "discord_message" "rules" {
 
         4. Discord's TOS and Community Guidelines
         You must abide by the rules noted in Discord's [Terms of Service](https://discord.com/terms) and [Community Guidelines](https://discord.com/guidelines).
-
       EOT
     }
 
