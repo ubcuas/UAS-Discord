@@ -256,6 +256,13 @@ resource "discord_channel_permission" "verify_verified" {
   deny         = data.discord_permission.no_view.deny_bits
 }
 
+resource "discord_channel_permission" "verify_bots" {
+  channel_id   = discord_text_channel.verify.id
+  type         = "role"
+  overwrite_id = discord_role.bots.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
 resource "discord_channel_permission" "verify_sub-team_lead" {
   channel_id   = discord_text_channel.verify.id
   type         = "role"
@@ -267,6 +274,13 @@ resource "discord_channel_permission" "verify_captain" {
   channel_id   = discord_text_channel.verify.id
   type         = "role"
   overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.everyone.allow_bits
+}
+
+resource "discord_channel_permission" "verify_uas_bot" {
+  channel_id   = discord_text_channel.verify.id
+  type         = "user"
+  overwrite_id = var.uas_bot_id
   allow        = data.discord_permission.everyone.allow_bits
 }
 
@@ -315,6 +329,17 @@ resource "discord_channel_permission" "sub-team_leads_admin" {
   type         = "role"
   overwrite_id = discord_role.admin.id
   deny         = data.discord_permission.no_view.deny_bits
+}
+
+## Trello
+
+# Trello bot can send messages in the #trello channel
+
+resource "discord_channel_permission" "trello_bot" {
+  channel_id   = discord_text_channel.admin_trello.id
+  type         = "user"
+  overwrite_id = var.trello_bot_id
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 ## Server Messages ##

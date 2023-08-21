@@ -7,3 +7,13 @@ resource "discord_member_roles" "uas_bot" {
     has_role = true
   }
 }
+
+resource "discord_member_roles" "trello_bot" {
+  user_id   = var.trello_bot_id
+  server_id = var.server_id
+
+  role {
+    role_id  = discord_role.bots.id
+    has_role = true
+  }
+}
