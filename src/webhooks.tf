@@ -1,3 +1,13 @@
+## Jira
+
+resource "discord_webhook" "jira_webhook" {
+  channel_id      = discord_text_channel.admin_notifications.id
+  name            = "Jira"
+  avatar_url      = "https://www.stagil.com/hubfs/jira%20work%20management.svg"
+}
+
+## GitHub
+
 resource "discord_webhook" "webhook" {
   channel_id      = discord_text_channel.software_reviews.id
   name            = "GitHub"
