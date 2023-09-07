@@ -3,7 +3,7 @@
 resource "discord_webhook" "jira_webhook" {
   channel_id      = discord_text_channel.admin_notifications.id
   name            = "Jira"
-  avatar_url      = "https://www.stagil.com/hubfs/jira%20work%20management.svg"
+  avatar_url      = "https://www.vhv.rs/dpng/d/545-5452076_jira-logo-jira-icon-png-transparent-png-download.png"
 }
 
 ## GitHub
