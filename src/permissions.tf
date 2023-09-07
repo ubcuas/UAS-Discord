@@ -331,17 +331,6 @@ resource "discord_channel_permission" "sub-team_leads_admin" {
   deny         = data.discord_permission.no_view.deny_bits
 }
 
-## Trello
-
-# Trello bot can send messages in the #trello channel
-
-resource "discord_channel_permission" "trello_bot" {
-  channel_id   = discord_text_channel.admin_trello.id
-  type         = "user"
-  overwrite_id = var.trello_bot_id
-  allow        = data.discord_permission.yes_view.allow_bits
-}
-
 ## Server Messages ##
 
 # No one can send messages in the #server-messages channel

@@ -47,11 +47,11 @@ resource "discord_text_channel" "admin_general" {
   sync_perms_with_category = true
 }
 
-resource "discord_text_channel" "admin_trello" {
-  name                     = "trello"
+resource "discord_text_channel" "admin_notifications" {
+  name                     = "jira"
   server_id                = var.server_id
   position                 = 2
-  topic                    = "Trello notifications for the admin team"
+  topic                    = "Jira notifications for the admin team"
   category                 = discord_category_channel.admin.id
   sync_perms_with_category = true
 }

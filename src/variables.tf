@@ -27,8 +27,3 @@ variable "github_token" {
   description = "The token for the GitHub provider"
   sensitive   = true
 }
-
-variable "trello_bot_id" {
-  type        = string
-  description = "The ID of the Trello bot"
-}
