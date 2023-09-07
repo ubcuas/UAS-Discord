@@ -2,6 +2,7 @@
 
 # Permission descriptions: https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
 # pow(2, 46) is for SEND_VOICE_MESSAGES which is not yet supported by the provider
+# pow(2, 43) is for CREATE_GUILD_EXPRESSIONS which is not yet supported by the provider
 
 data "discord_permission" "everyone" {
   create_instant_invite     = "deny"
@@ -74,7 +75,7 @@ data "discord_permission" "uas_alumni" {
 }
 
 data "discord_permission" "verified" {
-  allow_extends             = data.discord_permission.everyone.allow_bits
+  allow_extends             = data.discord_permission.everyone.allow_bits + pow(2, 43)
   deny_extends              = data.discord_permission.everyone.deny_bits
   add_reactions             = "allow"
   stream                    = "allow"
