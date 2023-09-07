@@ -22,19 +22,25 @@ resource "discord_message" "verify" {
     color       = data.discord_color.uas_blue.dec
     description = chomp(
       <<-EOT
-        Welcome to the UBC UAS Discord server! To gain full access to the server, use the `/verify` command in this channel.
+        Welcome to the UBC UAS Discord server! To gain full access to the server, please ensure you have filled out the roster form that has been sent out. After doing so, you will be given appropriate server roles in the following days.
       EOT
     )
 
-    fields {
-      name   = "Help"
-      inline = false
-      value  = chomp(
-        <<-EOT
-          If you have any issues with or questions about the verification process, please use the `/help` command.
-        EOT
-      )
-    }
+    # description = chomp(
+    #   <<-EOT
+    #     Welcome to the UBC UAS Discord server! To gain full access to the server, use the `/verify` command in this channel.
+    #   EOT
+    # )
+
+    # fields {
+    #   name   = "Help"
+    #   inline = false
+    #   value  = chomp(
+    #     <<-EOT
+    #       If you have any issues with or questions about the verification process, please use the `/help` command.
+    #     EOT
+    #   )
+    # }
   }
 }
 
