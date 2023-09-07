@@ -267,14 +267,14 @@ resource "discord_channel_permission" "verify_sub-team_lead" {
   channel_id   = discord_text_channel.verify.id
   type         = "role"
   overwrite_id = discord_role.sub-team_lead.id
-  allow        = data.discord_permission.everyone.allow_bits
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 resource "discord_channel_permission" "verify_captain" {
   channel_id   = discord_text_channel.verify.id
   type         = "role"
   overwrite_id = discord_role.captain.id
-  allow        = data.discord_permission.everyone.allow_bits
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 resource "discord_channel_permission" "verify_uas_bot" {
