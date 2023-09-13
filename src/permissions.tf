@@ -257,6 +257,13 @@ resource "discord_channel_permission" "verify_verified" {
   deny         = data.discord_permission.no_view.deny_bits
 }
 
+resource "discord_channel_permission" "verify_alumni" {
+  channel_id   = discord_text_channel.verify.id
+  type         = "role"
+  overwrite_id = discord_role.uas_alumni.id
+  allow        = data.discord_permission.no_view.deny_bits
+}
+
 resource "discord_channel_permission" "verify_bots" {
   channel_id   = discord_text_channel.verify.id
   type         = "role"
