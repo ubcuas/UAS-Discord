@@ -6,6 +6,7 @@ provider "registry.terraform.io/integrations/github" {
   constraints = "5.30.1"
   hashes = [
     "h1:Rdv7+NH6ISjuyXrtfVwUqCAZzGDWlqOYrfLoY4OQm7s=",
+    "h1:qBzUURcUQIKUNR3xjud3EcII5Sk5hn9MLi1LKXcof5Y=",
     "zh:02f9b213985bc06477ce516ea0483d060ca92e2462b8466c806b2adf3274a47f",
     "zh:32653df8e67888a88a7fa95504fd9a4eb2862e1d1ebe5fbaf97d509554bacbc1",
     "zh:376d799931fd2ebdd326776b3bc307368ed0dc2d4cb9ec58713df7d4eeb3ef07",
@@ -26,6 +27,7 @@ provider "registry.terraform.io/integrations/github" {
 provider "registry.terraform.io/lucky3028/discord" {
   version = "1.5.0"
   hashes = [
+    "h1:XPQHOja759Perrcc+/WgyuRmov3vneKTMQCcS9MUffI=",
     "h1:l6KA3KpyQTbT8C1IJMMXgLlMquL7pCrcozIlxU0Jn9c=",
     "zh:15d137767e8108038340cee252b4101c7764a2ad80c99616279a01413bbe2e32",
     "zh:52c5439e42d36cdd20e9b3ea58cd8ca3b97eb0b6e6e39a6078ed7c36d5946391",
