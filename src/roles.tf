@@ -1,3 +1,6 @@
+# UAS Bot holds the highest role in the server
+# Server Booster is the lowest role above @everyone
+
 resource "discord_role_everyone" "everyone" {
   server_id   = var.server_id
   permissions = data.discord_permission.everyone.allow_bits
@@ -133,16 +136,4 @@ resource "discord_role" "aeac" {
   position    = 2
 
   depends_on = [ discord_role.suas ]
-}
-
-# Server Boosters Role
-resource "discord_role" "server_booster" {
-  server_id   = var.server_id
-  name        = "Server Booster"
-  permissions = 0
-  hoist       = false
-  mentionable = false
-  position    = 1
-
-  depends_on = [ discord_role.aeac ]
 }
