@@ -330,13 +330,20 @@ data "discord_permission" "announcements_send" {
 
 ## Sub-Team Leads ##
 
-# Only sub-team leads and captains can view the #sub-team-leads channel
+# Only sub-team leads, lead advisors, and captains can view the #sub-team-leads channel
 
 resource "discord_channel_permission" "sub-team_leads_admin" {
   channel_id   = discord_text_channel.sub-team_leads.id
   type         = "role"
   overwrite_id = discord_role.admin.id
   deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "sub-team_leads_lead_advisor" {
+  channel_id   = discord_text_channel.sub-team_leads.id
+  type         = "role"
+  overwrite_id = discord_role.lead_advisor.id
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 ## Server Messages ##
