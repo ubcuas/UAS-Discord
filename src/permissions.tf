@@ -362,6 +362,7 @@ resource "discord_channel_permission" "server_messages_admin" {
   type         = "role"
   overwrite_id = discord_role.admin.id
   deny         = data.discord_permission.no_messaging.deny_bits
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 resource "discord_channel_permission" "server_messages_sub-team_lead" {
@@ -369,6 +370,7 @@ resource "discord_channel_permission" "server_messages_sub-team_lead" {
   type         = "role"
   overwrite_id = discord_role.sub-team_lead.id
   deny         = data.discord_permission.no_messaging.deny_bits
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 resource "discord_channel_permission" "server_messages_captain" {
@@ -376,6 +378,7 @@ resource "discord_channel_permission" "server_messages_captain" {
   type         = "role"
   overwrite_id = discord_role.captain.id
   deny         = data.discord_permission.no_messaging.deny_bits
+  allow        = data.discord_permission.yes_view.allow_bits
 }
 
 ## Sub-Team Leads Voice ##
