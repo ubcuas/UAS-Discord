@@ -277,3 +277,93 @@ resource "discord_text_channel" "software_errors" {
   category                 = discord_category_channel.software.id
   sync_perms_with_category = true
 }
+
+resource "discord_text_channel" "software_gcom_back_end" {
+  name                     = "gcom-back-end"
+  server_id                = var.server_id
+  position                 = 3
+  topic                    = "GCOM Back End: https://github.com/ubcuas/GCOM"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_gcom_front_end" {
+  name                     = "gcom-front-end"
+  server_id                = var.server_id
+  position                 = 4
+  topic                    = "GCOM Front End: https://github.com/ubcuas/GCOM-Front-End"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_missionplanner_scripts" {
+  name                     = "missionplanner-scripts"
+  server_id                = var.server_id
+  position                 = 5
+  topic                    = "MissionPlanner Scripts: https://github.com/ubcuas/MissionPlanner-Scripts"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_odlc" {
+  name                     = "odlc"
+  server_id                = var.server_id
+  position                 = 6
+  topic                    = "Object Detection, Localization, and Classification: https://github.com/ubcuas/ODLC"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_remote_id" {
+  name                     = "remote-id"
+  server_id                = var.server_id
+  position                 = 7
+  topic                    = "Remote ID"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_camera_feed" {
+  name                     = "camera-feed"
+  server_id                = var.server_id
+  position                 = 8
+  topic                    = "Camera Feed"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_collision_detection" {
+  name                     = "collision-detection"
+  server_id                = var.server_id
+  position                 = 9
+  topic                    = "Collision Detection"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_routing" {
+  name                     = "routing"
+  server_id                = var.server_id
+  position                 = 10
+  topic                    = "Routing"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_discord_bot" {
+  name                     = "discord-bot"
+  server_id                = var.server_id
+  position                 = 11
+  topic                    = "Discord Bot"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "software_uasitl" {
+  name                     = "uasitl"
+  server_id                = var.server_id
+  position                 = 12
+  topic                    = "UASITL: https://github.com/ubcuas/UASITL"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
