@@ -4,9 +4,20 @@
 # the Terraform state. The URL then gets put into https://skyhookapi.com/ with the Jira button
 # selected. The resulting URL is then put into the Jira webhook settings found here:
 # https://ubcuas.atlassian.net/plugins/servlet/webhooks
-
 resource "discord_webhook" "jira_webhook" {
   channel_id      = discord_text_channel.admin_notifications.id
+  name            = "Jira"
+  avatar_url      = "https://raw.githubusercontent.com/ubcuas/UAS-Discord/master/static/jira.png"
+}
+
+resource "discord_webhook" "jira_aircraft_webhook" {
+  channel_id      = discord_text_channel.aircraft_jira.id
+  name            = "Jira"
+  avatar_url      = "https://raw.githubusercontent.com/ubcuas/UAS-Discord/master/static/jira.png"
+}
+
+resource "discord_webhook" "jira_payload_webhook" {
+  channel_id      = discord_text_channel.payload_jira.id
   name            = "Jira"
   avatar_url      = "https://raw.githubusercontent.com/ubcuas/UAS-Discord/master/static/jira.png"
 }
