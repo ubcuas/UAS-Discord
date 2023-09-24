@@ -238,6 +238,15 @@ resource "discord_text_channel" "aircraft_general" {
   sync_perms_with_category = true
 }
 
+resource "discord_text_channel" "aircraft_jira" {
+  name                     = "jira"
+  server_id                = var.server_id
+  position                 = 1
+  topic                    = "Aircraft Jira Tickets"
+  category                 = discord_category_channel.aircraft.id
+  sync_perms_with_category = true
+}
+
 ## Payload Category ##
 
 resource "discord_text_channel" "payload_general" {
@@ -245,6 +254,41 @@ resource "discord_text_channel" "payload_general" {
   server_id                = var.server_id
   position                 = 0
   topic                    = "Home of the payload sub-team"
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "payload_aeac" {
+  name                     = "aeac"
+  server_id                = var.server_id
+  position                 = 1
+  topic                    = "AEAC Competition"
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "payload_suas" {
+  name                     = "suas"
+  server_id                = var.server_id
+  position                 = 2
+  topic                    = "SUAS Competition"
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "payload_jira" {
+  name                     = "jira"
+  server_id                = var.server_id
+  position                 = 3
+  topic                    = "Payload Jira Tickets"
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
+resource "discord_voice_channel" "payload_general" {
+  name                     = "General"
+  server_id                = var.server_id
+  position                 = 0
   category                 = discord_category_channel.payload.id
   sync_perms_with_category = true
 }
