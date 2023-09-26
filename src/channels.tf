@@ -250,7 +250,7 @@ resource "discord_text_channel" "aircraft_antenna_tracker" {
 resource "discord_text_channel" "aircraft_jira" {
   name                     = "jira"
   server_id                = var.server_id
-  position                 = 1
+  position                 = 2
   topic                    = "Aircraft Jira Tickets"
   category                 = discord_category_channel.aircraft.id
   sync_perms_with_category = true
