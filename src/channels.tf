@@ -238,11 +238,28 @@ resource "discord_text_channel" "aircraft_general" {
   sync_perms_with_category = true
 }
 
+resource "discord_text_channel" "aircraft_antenna_tracker" {
+  name                     = "antenna-tracker"
+  server_id                = var.server_id
+  position                 = 1
+  topic                    = "Antenna Tracker"
+  category                 = discord_category_channel.aircraft.id
+  sync_perms_with_category = true
+}
+
 resource "discord_text_channel" "aircraft_jira" {
   name                     = "jira"
   server_id                = var.server_id
   position                 = 1
   topic                    = "Aircraft Jira Tickets"
+  category                 = discord_category_channel.aircraft.id
+  sync_perms_with_category = true
+}
+
+resource "discord_voice_channel" "aircraft_general" {
+  name                     = "General"
+  server_id                = var.server_id
+  position                 = 0
   category                 = discord_category_channel.aircraft.id
   sync_perms_with_category = true
 }
@@ -408,6 +425,14 @@ resource "discord_text_channel" "software_uasitl" {
   server_id                = var.server_id
   position                 = 12
   topic                    = "UASITL: https://github.com/ubcuas/UASITL"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
+resource "discord_voice_channel" "software_general" {
+  name                     = "General"
+  server_id                = var.server_id
+  position                 = 0
   category                 = discord_category_channel.software.id
   sync_perms_with_category = true
 }
