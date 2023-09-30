@@ -1,8 +1,9 @@
 ## Jira
 
-# You can find the webhook URL in the channel settings of the Discord server or by downloading
-# the Terraform state. The URL then gets put into https://skyhookapi.com/ with the Jira button
-# selected. The resulting URL is then put into the Jira webhook settings found here:
+# You can find the webhook URL by downloading the Terraform state from
+# https://app.terraform.io/app/ubcuas/workspaces/UAS-Discord/states. The URL
+# then gets put into https://skyhookapi.com/ with the Jira button selected.
+# The resulting URL is then put into the Jira webhook settings found here:
 # https://ubcuas.atlassian.net/plugins/servlet/webhooks
 resource "discord_webhook" "jira_webhook" {
   channel_id      = discord_text_channel.admin_notifications.id
