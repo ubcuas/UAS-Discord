@@ -247,10 +247,28 @@ resource "discord_text_channel" "aircraft_antenna_tracker" {
   sync_perms_with_category = true
 }
 
+resource "discord_text_channel" "aircraft_motor_thrust_stand" {
+  name                     = "motor-thrust-stand"
+  server_id                = var.server_id
+  position                 = 2
+  topic                    = "Motor thrust stand project"
+  category                 = discord_category_channel.aircraft.id
+  sync_perms_with_category = true
+}
+
+resource "discord_text_channel" "aircraft_load_tester" {
+  name                     = "load-tester"
+  server_id                = var.server_id
+  position                 = 3
+  topic                    = "Power supply testing"
+  category                 = discord_category_channel.aircraft.id
+  sync_perms_with_category = true
+}
+
 resource "discord_text_channel" "aircraft_jira" {
   name                     = "jira"
   server_id                = var.server_id
-  position                 = 2
+  position                 = 4
   topic                    = "Aircraft Jira Tickets"
   category                 = discord_category_channel.aircraft.id
   sync_perms_with_category = true
