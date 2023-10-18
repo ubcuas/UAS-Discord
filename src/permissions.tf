@@ -392,6 +392,13 @@ resource "discord_channel_permission" "sub-team_leads_voice_admin" {
   deny         = data.discord_permission.no_view.deny_bits
 }
 
+resource "discord_channel_permission" "sub-team_leads_voice_lead_advisor" {
+  channel_id   = discord_voice_channel.sub-team_leads_voice.id
+  type         = "role"
+  overwrite_id = discord_role.lead_advisor.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
 ## AEAC ##
 
 # Only AEAC members and captains can view the #aeac channel
