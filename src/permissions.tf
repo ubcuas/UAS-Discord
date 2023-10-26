@@ -537,3 +537,28 @@ resource "discord_channel_permission" "bot_commands_everyone" {
   overwrite_id = discord_role_everyone.everyone.id
   allow        = data.discord_permission.yes_slash_commands.allow_bits
 }
+
+## RPAS Crew ##
+
+# Only RPAS members and captains can view the #rpas-crew channel
+
+resource "discord_channel_permission" "rpas_crew_everyone" {
+  channel_id   = discord_text_channel.rpas_crew.id
+  type         = "role"
+  overwrite_id = discord_role_everyone.everyone.id
+  deny         = data.discord_permission.no_view.deny_bits
+}
+
+resource "discord_channel_permission" "rpas_crew_rpas" {
+  channel_id   = discord_text_channel.rpas_crew.id
+  type         = "role"
+  overwrite_id = discord_role.rpas.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}
+
+resource "discord_channel_permission" "rpas_crew_captain" {
+  channel_id   = discord_text_channel.rpas_crew.id
+  type         = "role"
+  overwrite_id = discord_role.captain.id
+  allow        = data.discord_permission.yes_view.allow_bits
+}

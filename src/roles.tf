@@ -13,7 +13,7 @@ resource "discord_role" "captain" {
   color       = data.discord_color.captain.dec
   hoist       = true
   mentionable = true
-  position    = 13
+  position    = 14
 }
 
 resource "discord_role" "sub-team_lead" {
@@ -23,7 +23,7 @@ resource "discord_role" "sub-team_lead" {
   color       = data.discord_color.sub-team_lead.dec
   hoist       = false
   mentionable = true
-  position    = 12
+  position    = 13
 
   depends_on = [ discord_role.captain ]
 }
@@ -35,7 +35,7 @@ resource "discord_role" "admin" {
   color       = data.discord_color.admin.dec
   hoist       = false
   mentionable = true
-  position    = 11
+  position    = 12
 
   depends_on = [ discord_role.sub-team_lead ]
 }
@@ -47,7 +47,7 @@ resource "discord_role" "bots" {
   color       = data.discord_color.white.dec
   hoist       = false
   mentionable = false
-  position    = 10
+  position    = 11
 
   depends_on = [ discord_role.admin ]
 }
@@ -59,7 +59,7 @@ resource "discord_role" "aircraft" {
   color       = data.discord_color.aircraft.dec
   hoist       = true
   mentionable = true
-  position    = 9
+  position    = 10
 
   depends_on = [ discord_role.bots ]
 }
@@ -71,7 +71,7 @@ resource "discord_role" "payload" {
   color       = data.discord_color.payload.dec
   hoist       = true
   mentionable = true
-  position    = 8
+  position    = 9
 
   depends_on = [ discord_role.aircraft ]
 }
@@ -83,7 +83,7 @@ resource "discord_role" "software" {
   color       = data.discord_color.software.dec
   hoist       = true
   mentionable = true
-  position    = 7
+  position    = 8
 
   depends_on = [ discord_role.payload ]
 }
@@ -96,7 +96,7 @@ resource "discord_role" "lead_advisor" {
   color       = data.discord_color.white.dec
   hoist       = false
   mentionable = true
-  position    = 6
+  position    = 8
 
   depends_on = [ discord_role.software ]
 }
@@ -109,7 +109,7 @@ resource "discord_role" "verified" {
   color       = data.discord_color.uas_blue.dec
   hoist       = false
   mentionable = false
-  position    = 5
+  position    = 7
 
   depends_on = [ discord_role.lead_advisor ]
 }
@@ -122,7 +122,7 @@ resource "discord_role" "uas_alumni" {
   color       = data.discord_color.white.dec
   hoist       = false
   mentionable = false
-  position    = 4
+  position    = 6
 
   depends_on = [ discord_role.verified ]
 }
@@ -134,7 +134,7 @@ resource "discord_role" "suas" {
   permissions = 0
   hoist       = false
   mentionable = true
-  position    = 3
+  position    = 5
 
   depends_on = [ discord_role.uas_alumni ]
 }
@@ -146,7 +146,19 @@ resource "discord_role" "aeac" {
   permissions = 0
   hoist       = false
   mentionable = true
-  position    = 2
+  position    = 4
 
   depends_on = [ discord_role.suas ]
+}
+
+# Members receiving RPAS flight training & certification
+resource "discord_role" "rpas" {
+  server_id   = var.server_id
+  name        = "RPAS"
+  permissions = 0
+  hoist       = false
+  mentionable = true
+  position    = 3
+
+  depends_on = [ discord_role.aeac ]
 }

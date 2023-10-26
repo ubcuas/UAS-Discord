@@ -218,10 +218,19 @@ resource "discord_text_channel" "flight_club" {
   sync_perms_with_category = true
 }
 
+resource "discord_text_channel" "rpas_crew" {
+  name                     = "rpas-crew"
+  server_id                = var.server_id
+  position                 = 6
+  topic                    = "Private channel for members receiving RPAS flight training & certification"
+  category                 = discord_category_channel.specialized.id
+  sync_perms_with_category = false
+}
+
 resource "discord_text_channel" "rpas_licensing" {
   name                     = "rpas-licensing"
   server_id                = var.server_id
-  position                 = 6
+  position                 = 7
   topic                    = "Let's go be legal pilots!"
   category                 = discord_category_channel.specialized.id
   sync_perms_with_category = true
