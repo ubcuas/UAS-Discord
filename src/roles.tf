@@ -13,7 +13,7 @@ resource "discord_role" "captain" {
   color       = data.discord_color.captain.dec
   hoist       = true
   mentionable = true
-  position    = 14
+  position    = 15
 }
 
 resource "discord_role" "sub-team_lead" {
@@ -23,7 +23,7 @@ resource "discord_role" "sub-team_lead" {
   color       = data.discord_color.sub-team_lead.dec
   hoist       = false
   mentionable = true
-  position    = 13
+  position    = 14
 
   depends_on = [ discord_role.captain ]
 }
@@ -35,7 +35,7 @@ resource "discord_role" "admin" {
   color       = data.discord_color.admin.dec
   hoist       = false
   mentionable = true
-  position    = 12
+  position    = 13
 
   depends_on = [ discord_role.sub-team_lead ]
 }
@@ -47,7 +47,7 @@ resource "discord_role" "bots" {
   color       = data.discord_color.white.dec
   hoist       = false
   mentionable = false
-  position    = 11
+  position    = 12
 
   depends_on = [ discord_role.admin ]
 }
@@ -59,7 +59,7 @@ resource "discord_role" "aircraft" {
   color       = data.discord_color.aircraft.dec
   hoist       = true
   mentionable = true
-  position    = 10
+  position    = 11
 
   depends_on = [ discord_role.bots ]
 }
@@ -71,7 +71,7 @@ resource "discord_role" "payload" {
   color       = data.discord_color.payload.dec
   hoist       = true
   mentionable = true
-  position    = 9
+  position    = 10
 
   depends_on = [ discord_role.aircraft ]
 }
@@ -83,7 +83,7 @@ resource "discord_role" "software" {
   color       = data.discord_color.software.dec
   hoist       = true
   mentionable = true
-  position    = 8
+  position    = 9
 
   depends_on = [ discord_role.payload ]
 }
