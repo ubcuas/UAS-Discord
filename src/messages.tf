@@ -149,7 +149,7 @@ resource "discord_message" "rules" {
       inline = false
       value  = chomp(
         <<-EOT
-          By joining UBC UAS you agree to our [rules and guidelines](https://screenmessage.com/uas-agreement-wip).
+          By joining UBC UAS you agree to our [rules and guidelines](https://docs.google.com/document/d/1nsYEYXe23G-ayOwDIZmGNQq24AO7br2q/edit?usp=sharing&ouid=103956132898694585580&rtpof=true&sd=true).
         EOT
       )
     }
