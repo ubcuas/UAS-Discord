@@ -45,7 +45,7 @@ resource "discord_role" "bots" {
   name        = "Bots"
   permissions = 0
   color       = data.discord_color.white.dec
-  hoist       = false
+  hoist       = true
   mentionable = false
   position    = 12
 
