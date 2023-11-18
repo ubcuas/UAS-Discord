@@ -366,6 +366,15 @@ resource "discord_text_channel" "software_errors" {
   sync_perms_with_category = true
 }
 
+resource "discord_text_channel" "software_integration" {
+  name                     = "integration"
+  server_id                = var.server_id
+  position                 = 2
+  topic                    = "Software discussion of integration with payload and aircraft"
+  category                 = discord_category_channel.software.id
+  sync_perms_with_category = true
+}
+
 resource "discord_text_channel" "software_gcom_back_end" {
   name                     = "gcom-back-end"
   server_id                = var.server_id
