@@ -337,6 +337,22 @@ resource "discord_voice_channel" "payload_general" {
   sync_perms_with_category = true
 }
 
+resource "discord_voice_channel" "payload_aeac" {
+  name                     = "AEAC"
+  server_id                = var.server_id
+  position                 = 1
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
+resource "discord_voice_channel" "payload_suas" {
+  name                     = "SUAS"
+  server_id                = var.server_id
+  position                 = 2
+  category                 = discord_category_channel.payload.id
+  sync_perms_with_category = true
+}
+
 ## Software Category ##
 
 resource "discord_text_channel" "software_general" {
